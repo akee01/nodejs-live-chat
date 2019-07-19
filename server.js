@@ -1,4 +1,4 @@
-const app = require("socket.io")(3000)
+const app = require("socket.io")(process.env.PORT || 3000)
 
 const users = {}
 
