@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        h1{
+            text-align: center;
+        }
+        #chat-container{
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #eee;
+            min-height: 500px;
+            margin: 0 auto;
+        }
+        #messages-container{
+            overflow: auto;
+        }
+        #messages-container li{
+            list-style: none;
+            display: block;
+            padding: 10px;
+        }
+        #messages-container li:nth-child(odd){
+            background: lightblue;
+        }
+        #messages-container li:nth-child(even){
+            background: lightgreen;
+        }
+        #form-container{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        #message{
+            width: 90%;
+            height: 30px;
+        }
+        #send-message{
+            height: 35px;
+        }
+    </style>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <title>Node JS Chat App</title>
+</head>
+<body>
+    <h1>NODE JS Chat App</h1>
+    <div id="chat-container">
+        <div id="messages-container">
+        </div>
+        <div id="form-container">
+            <input id="message" />
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+</body>
+</html>

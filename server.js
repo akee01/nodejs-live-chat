@@ -1,0 +1,14 @@
+const app = require("socket.io")(3000)
+
+const users = {}
+
+app.on("connection",socket=>{
+    console.log("Connection made by socket id: "+socket.id);
+    socket.on("send-msg",data=>{
+        socket.broadcast.emit("chat-message",{msg:data,name:users[socket.id]});
+    });
+    socket.on("new-user",name=>{
+        users[socket.id] = name;
+        socket.broadcast.emit("user-joined",name);
+    });
+});
