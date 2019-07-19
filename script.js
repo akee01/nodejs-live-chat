@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000');
+const socket = io();
 messageContainer = document.getElementById("messages-container");
 sendMessageBtn = document.getElementById("send-message");
 message = document.getElementById("message");
