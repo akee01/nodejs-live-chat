@@ -1,11 +1,11 @@
 const PORT = process.env.PORT || 3000;
 const app = require("socket.io")(PORT)
-const https = require("https");
+const http = require("http");
 const path = require("path");
 const fs = require("fs");
 const users = {}
 console.log("Using Port :"+ PORT);
-https.createServer((req,res) => {
+http.createServer((req,res) => {
     console.log(req.url);
     contentType = "text/html";
     file = path.join(__dirname,req.url === "/" ? "index.html" : req.url); 
@@ -38,9 +38,18 @@ https.createServer((req,res) => {
     }
     console.log("File"+file);
     fs.readFile(file,(err,content)=>{
-        if(err) throw err;
-        res.writeHead(200,{'Content-Type':contentType});
-        res.end(content,"utf8");
+        if(err){
+            if(err.code == 'ENOENT'){
+                res.writeHead(404,{'Content-Type':contentType});                    
+                res.end("404 Not Found","utf8");
+            }else{
+                res.writeHead(500);
+                res.end("Internal Server error "+err.code);
+            }
+        }else{
+            res.writeHead(200,{'Content-Type':contentType});
+            res.end(content,"utf8");
+        }
     });
 }).listen(80,()=>{console.log("Server Running...")});
 
