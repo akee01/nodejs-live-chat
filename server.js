@@ -51,7 +51,7 @@ https.createServer((req,res) => {
             res.end(content,"utf8");
         }
     });
-}).listen(80,()=>{console.log("Server Running...")});
+}).listen(PORT,()=>{console.log("Server Running...")});
 
 app.on("connection",socket=>{
     console.log("Connection made by socket id: "+socket.id);
