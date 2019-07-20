@@ -1,4 +1,4 @@
-const socket = io('https://murmuring-springs-61373.herokuapp.com:20852');
+const socket = io();
 messageContainer = document.getElementById("messages-container");
 sendMessageBtn = document.getElementById("send-message");
 message = document.getElementById("message");

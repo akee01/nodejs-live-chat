@@ -36,6 +36,7 @@ http.createServer((req,res) => {
             break;
         }
     }
+    console.log("File"+file);
     fs.readFile(file,(err,content)=>{
         if(err) throw err;
         res.writeHead(200,{'Content-Type':contentType});
