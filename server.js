@@ -1,10 +1,10 @@
 const PORT = process.env.PORT || 3000;
 const app = require("socket.io")(PORT)
-// const http = require("http");
-// const path = require("path");
-// const fs = require("fs");
+const https = require("https");
+const path = require("path");
+const fs = require("fs");
 const users = {}
-
+console.log(PORT);
 // http.createServer((req,res) => {
 //     console.log(req.url);
 //     contentType = "text/html";
@@ -41,8 +41,8 @@ const users = {}
 //         res.writeHead(200,{'Content-Type':contentType});
 //         res.end(content,"utf8");
 //     });
-// }).listen(()=>{console.log("Server Running...")});
-app.use("/");
+// }).listen(5000,()=>{console.log("Server Running...")});
+
 app.on("connection",socket=>{
     console.log("Connection made by socket id: "+socket.id);
     socket.on("send-msg",data=>{
