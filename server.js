@@ -1,11 +1,11 @@
 const PORT = process.env.PORT || 3000;
 const app = require("socket.io")(PORT)
-const http = require("http");
+const https = require("http");
 const path = require("path");
 const fs = require("fs");
 const users = {}
 console.log("Using Port :"+ PORT);
-http.createServer((req,res) => {
+https.createServer((req,res) => {
     console.log(req.url);
     contentType = "text/html";
     file = path.join(__dirname,req.url === "/" ? "index.html" : req.url); 
