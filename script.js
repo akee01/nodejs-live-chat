@@ -1,3 +1,4 @@
+var full = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
 const socket = io();
 messageContainer = document.getElementById("messages-container");
 sendMessageBtn = document.getElementById("send-message");
